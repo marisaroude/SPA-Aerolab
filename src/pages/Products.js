@@ -1,14 +1,19 @@
 
 import getProduct from '../utils/getProduct'
 import Error404 from './Error404';
-
-const infoProduct = async (products) =>{
+import arrowLeft from '../assets/icons/arrow-left.svg'
+const infoProduct = async (products) => {
 
     const product = getProduct(products)
     console.log(product);
 
 
-    const view = product?`
+    const view = product ? `
+    <div class = "Arrow-left"> 
+        <a href="#" onclick="history.go(-1);">
+            <img src="${arrowLeft}" alt="arrow left">
+        </a>
+    </div>
         <div class = "Products-inner">
             <article class = "Product-card">
                 <img src = "${product.img.url}" alt = "${product.name}">
@@ -22,7 +27,7 @@ const infoProduct = async (products) =>{
             </article>
         </div>        
     `
-    : Error404()
+        : Error404()
     return view
 }
 
